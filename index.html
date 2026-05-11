@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#f2ca50",
+                        "secondary-fixed-dim": "#eac25a",
+                        "on-error": "#690005",
+                        "on-tertiary": "#3a3000",
+                        "surface": "#131313",
+                        "primary-fixed": "#ffe088",
+                        "on-secondary-container": "#fff3de",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface": "#e2e2e2",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#544600",
+                        "on-tertiary-fixed": "#221b00",
+                        "inverse-surface": "#e2e2e2",
+                        "surface-variant": "#353535",
+                        "inverse-primary": "#735c00",
+                        "on-primary-fixed": "#241a00",
+                        "on-primary-container": "#554300",
+                        "inverse-on-surface": "#303030",
+                        "surface-dim": "#131313",
+                        "surface-container-low": "#1b1b1b",
+                        "outline": "#99907c",
+                        "primary-container": "#d4af37",
+                        "secondary-container": "#8b6b00",
+                        "surface-container": "#1f1f1f",
+                        "tertiary-container": "#d2b100",
+                        "secondary-fixed": "#ffdf95",
+                        "tertiary-fixed-dim": "#e9c400",
+                        "surface-container-highest": "#353535",
+                        "on-secondary-fixed-variant": "#594400",
+                        "tertiary-fixed": "#ffe16d",
+                        "secondary": "#eac25a",
+                        "on-background": "#e2e2e2",
+                        "surface-tint": "#e9c349",
+                        "on-secondary": "#3e2e00",
+                        "primary-fixed-dim": "#e9c349",
+                        "surface-bright": "#393939",
+                        "error": "#ffb4ab",
+                        "tertiary": "#f2cc00",
+                        "on-tertiary-container": "#534400",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-secondary-fixed": "#251a00",
+                        "error-container": "#93000a",
+                        "on-primary": "#3c2f00",
+                        "outline-variant": "#4d4635",
+                        "background": "#131313",
+                        "on-surface-variant": "#d0c5af",
+                        "border-divider": "rgba(201, 211, 215, 0.1)",
+                        "sky-blue": "#408CF4",
+                        "light-gray": "#B2B2B2",
+                        "critical-red": "#C2220A",
+                        "electric-blue": "#f2ca50",
+                        "deep-black": "#131313",
+                        "pure-white": "#FFFFFF",
+                        "dark-gray": "#515151"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "small": "12px",
+                        "major": "32px",
+                        "micro": "4px",
+                        "compact": "8px",
+                        "section": "56px",
+                        "standard": "16px",
+                        "large": "24px",
+                        "premium": "40px",
+                        "medium": "20px",
+                        "block": "48px"
+                    },
+                    "fontFamily": {
+                        "body-small": ["Fira Sans"],
+                        "body-standard": ["Fira Sans"],
+                        "display-1-mobile": ["Fira Sans"],
+                        "button-label": ["Fira Sans"],
+                        "body-large": ["Fira Sans"],
+                        "eyebrow-micro": ["Fira Sans"],
+                        "heading-4": ["Fira Sans"],
+                        "display-1": ["Fira Sans"],
+                        "heading-2": ["Fira Sans"]
+                    },
+                    "fontSize": {
+                        "body-small": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-standard": ["16px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-1-mobile": ["36px", { "lineHeight": "44px", "fontWeight": "500" }],
+                        "button-label": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-large": ["22px", { "lineHeight": "33px", "fontWeight": "400" }],
+                        "eyebrow-micro": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "heading-4": ["16px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "display-1": ["58px", { "lineHeight": "70px", "letterSpacing": "0px", "fontWeight": "500" }],
+                        "heading-2": ["28px", { "lineHeight": "36px", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle, rgba(19, 19, 19, 0.4) 0%, rgba(19, 19, 19, 0.8) 70%, rgba(19, 19, 19, 1) 100%);
+        }
+
+        .transition-all-200 {
+            transition: all 0.2s ease-in-out;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f2ca50;
+        }
+
+        * {
+            border-radius: 0px !important;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .mobile-overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+
+        .mobile-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Typewriter Cursor */
+        .typewriter-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+            margin-left: 2px;
+            color: #f2ca50;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card-hover:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        header.fixed {
+            border-bottom-right-radius: 22px !important;
+            border-bottom-left-radius: 22px !important;
+        }
+
+        @keyframes arrow-slide {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(5px);
+            }
+        }
+
+        .animate-arrow-hover:hover .material-symbols-outlined {
+            animation: arrow-slide 0.6s infinite ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-deep-black text-pure-white font-body-standard overflow-x-hidden">
+    <!-- TopAppBar -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 bg-deep-black border-b border-border-divider h-[64px] flex justify-between items-center px-4 sm:px-6 lg:px-premium max-w-[1440px] mx-auto left-1/2 -translate-x-1/2">
+        <div class="font-heading-2 text-[20px] sm:text-heading-2 font-bold tracking-tight text-pure-white uppercase">Al
+            Qawsa</div>
+        <nav class="hidden md:flex gap-large lg:gap-major items-center">
+            <a class="text-primary font-bold font-heading-4 text-heading-4 transition-all duration-200"
+                href="#">Products</a>
+            <a class="text-pure-white opacity-80 hover:opacity-100 hover:text-primary font-heading-4 text-heading-4 transition-all duration-200"
+                href="#">Brands</a>
+            <a class="text-pure-white opacity-80 hover:opacity-100 hover:text-primary font-heading-4 text-heading-4 transition-all duration-200"
+                href="#">Gallery</a>
+            <a class="text-pure-white opacity-80 hover:opacity-100 hover:text-primary font-heading-4 text-heading-4 transition-all duration-200"
+                href="#">Certificates</a>
+            <a class="text-pure-white opacity-80 hover:opacity-100 hover:text-primary font-heading-4 text-heading-4 transition-all duration-200"
+                href="#">Contact Us</a>
+        </nav>
+        <div class="flex items-center gap-3 sm:gap-large">
+            <span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">search</span>
+
+            <button id="hamburger-btn"
+                class="md:hidden material-symbols-outlined cursor-pointer hover:text-primary transition-colors text-2xl"
+                aria-label="Open menu">menu</button>
+        </div>
+    </header>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-overlay" class="mobile-overlay fixed inset-0 z-[60] bg-black/60"></div>
+    <!-- Mobile Slide-out Menu -->
+    <nav id="mobile-menu"
+        class="mobile-menu fixed top-0 right-0 z-[70] w-[280px] h-full bg-surface-container border-l border-border-divider flex flex-col">
+        <div class="flex justify-between items-center h-[64px] px-5 border-b border-border-divider">
+            <span class="font-bold text-primary uppercase text-lg">Menu</span>
+            <button id="close-menu-btn"
+                class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors text-2xl"
+                aria-label="Close menu">close</button>
+        </div>
+        <div class="flex flex-col gap-2 px-5 py-6">
+            <a class="text-primary font-bold font-heading-4 text-heading-4 py-3 border-b border-border-divider"
+                href="#">Products</a>
+            <a class="text-pure-white opacity-80 hover:text-primary font-heading-4 text-heading-4 py-3 border-b border-border-divider transition-colors"
+                href="#">Brands</a>
+            <a class="text-pure-white opacity-80 hover:text-primary font-heading-4 text-heading-4 py-3 border-b border-border-divider transition-colors"
+                href="#">Gallery</a>
+            <a class="text-pure-white opacity-80 hover:text-primary font-heading-4 text-heading-4 py-3 border-b border-border-divider transition-colors"
+                href="#">Certificates</a>
+            <a class="text-pure-white opacity-80 hover:text-primary font-heading-4 text-heading-4 py-3 transition-colors"
+                href="#">Contact Us</a>
+        </div>
+    </nav>
+    <main class="mt-[64px]">
+        <!-- Hero Section -->
+        <section
+            class="relative min-h-[500px] sm:mt-[-50px] sm:min-h-[650px] lg:min-h-[706px] flex items-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <video autoplay loop muted playsinline class="w-full h-full object-cover object-center scale-105">
+                    <source src="Adobe Express - cars video.mp4" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 hero-gradient"></div>
+            </div>
+            <div class="relative z-10 px-4 sm:px-6 lg:px-premium max-w-[1440px] mx-auto w-full">
+                <div class="max-w-5xl text-left">
+                    <h1 id="typewriter-h1"
+                        class="font-display-1 text-[28px] leading-[36px] sm:text-display-1-mobile lg:text-display-1 text-pure-white mb-large sm:mb-major uppercase typewriter-cursor min-h-[72px] sm:min-h-[88px] lg:min-h-[140px]">
+                    </h1>
+                    <div class="mt-medium sm:mt-premium"><a
+                            class="inline-flex items-center bg-primary-container text-on-primary-fixed px-6 sm:px-8 py-3 sm:py-4 font-button-label text-button-label font-bold uppercase tracking-widest hover:bg-primary transition-colors duration-300 animate-arrow-hover"
+                            href="#">VIEW PRODUCTS <span
+                                class="material-symbols-outlined align-middle ml-2 text-sm">arrow_forward</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Interactive Categories (Bento-style Grid) -->
+        <section
+            class="py-10 sm:py-section px-4 sm:px-6 lg:px-premium max-w-[1440px] mx-auto bg-deep-black reveal-on-scroll">
+            <div
+                class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 sm:gap-0 mb-8 sm:mb-block">
+                <div>
+                    <span class="text-primary font-bold tracking-widest uppercase text-eyebrow-micro mb-2 block">System
+                        Components</span>
+                    <h2 class="font-heading-2 text-[22px] sm:text-heading-2 text-pure-white uppercase">SHOP BY CATEGORY
+                    </h2>
+                </div>
+                <a class="text-primary font-button-label text-button-label hover:text-pure-white transition-colors uppercase border-b border-primary"
+                    href="#">VIEW ALL CATEGORIES</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-major">
+                <!-- Category Card 1: Body & Exterior -->
+                <div
+                    class="group relative overflow-hidden h-[280px] sm:h-[350px] lg:h-[400px] border border-border-divider hover:border-primary transition-all-200">
+                    <img alt="Body and Exterior automotive parts"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-40"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK_UMF8ck1xIucRMm7H12gLi1KuRx6JJ6VAy0eAAENPcvBCoNUuvrnvyQHqLOua96707HvsQYxH1QW65H28gYS8fyU589bq32jUWbRchg03OqHsxKNVSvtCnRYy-aGnfky8YUqNZjroRlv0H4NI1L5zDXUE34Zsf4j_cBN4LDMFeIku84CnzI1PpuIhzxUdydslaLSv6ZBhaLEusXUQ7NC-6vXqH7J2cRe0bzRH_vZ9HD80hJzk6QjIo1suafCXqa-D1ZRb8J8N2k" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/60 to-transparent">
+                    </div>
+                    <div class="absolute bottom-0 p-large w-full">
+                        <h3 class="font-heading-2 text-heading-2 text-pure-white mb-2 uppercase">Body &amp; Exterior
+                        </h3>
+                        <p
+                            class="font-body-small text-body-small text-light-gray opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            Bumpers, Fenders, Doors, Hood, Grills, Glass</p>
+                        <div class="mt-large h-[2px] w-0 group-hover:w-full bg-primary transition-all duration-300">
+                        </div>
+                    </div>
+                </div>
+                <!-- Category Card 2: Braking Systems -->
+                <div
+                    class="group relative overflow-hidden h-[280px] sm:h-[350px] lg:h-[400px] border border-border-divider hover:border-primary transition-all-200">
+                    <img alt="High performance braking system components"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-40"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDNCrPWwmF2WHOJeEj1WOZ-DZnYNzPcFRf9xaQBgw53ZMQ2eQWUOII1hSQ1b6waFj4pFRX_-nsYo2acFdmf5VOCakBl6ey_-foh9EUxAyydWJdgbi3hUnIsOKbjY4zQXzGejV6W-BYMVavGb2nyf0ZRMccJq3Nyzs3Zn11NShxWXyKUcEVQiZ10Ib4Ms0856qzgUS9fYpSOD-IoROOYVWwpEHQYfIEP05P28tTR94-J5x6vN3azMbZwEdPDIe-xtHN4B_XmSW92lY" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/60 to-transparent">
+                    </div>
+                    <div class="absolute bottom-0 p-large w-full">
+                        <h3 class="font-heading-2 text-heading-2 text-pure-white mb-2 uppercase">Braking Systems</h3>
+                        <p
+                            class="font-body-small text-body-small text-light-gray opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            Brake Pads, Brake Discs, Calipers</p>
+                        <div class="mt-large h-[2px] w-0 group-hover:w-full bg-primary transition-all duration-300">
+                        </div>
+                    </div>
+                </div>
+                <!-- Category Card 3: Engine Internals -->
+                <div
+                    class="group relative overflow-hidden h-[280px] sm:h-[350px] lg:h-[400px] border border-border-divider hover:border-primary transition-all-200">
+                    <img alt="Engine internal components like pistons and bearings"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-40"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKUmn-kl5MdmG3SxcX6KA0iVmrZ964-7OvsM5DaUJvLDNFrVBlKgZ3cQJ7lLR_hbzfzNs3qj1-XFe7_tCrgFNov6_KamB16iY3h4gOj0S3u9d7QM2ji5b8kxfHKUdWrwFFaLgipLGNpLOwf-4jzlLJ66yRVqkEal4cernRk2haI38kx-EZNz5eTtZKfj4-W-lSjins533SbVmiwoSGZQDnboqWLQ9da9z8tEnKNvrH4eLBR8SJat4x35QNMLwLco-qMm8FwQI8nUY" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/60 to-transparent">
+                    </div>
+                    <div class="absolute bottom-0 p-large w-full">
+                        <h3 class="font-heading-2 text-heading-2 text-pure-white mb-2 uppercase">Engine Internals</h3>
+                        <p
+                            class="font-body-small text-body-small text-light-gray opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            Piston, Piston Ring, Gasket Kits, Bearings</p>
+                        <div class="mt-large h-[2px] w-0 group-hover:w-full bg-primary transition-all duration-300">
+                        </div>
+                    </div>
+                </div>
+                <!-- Category Card 4: Suspension & Steering -->
+                <div
+                    class="group relative overflow-hidden h-[280px] sm:h-[350px] lg:h-[400px] border border-border-divider hover:border-primary transition-all-200">
+                    <img alt="Suspension and steering automotive components"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-40"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2u5mSUY1qFV-WMHzz2ZXQnPy1dEEMLyPh4lYA06FMufrzQ20caSecvOvaeiM91jHb3BZkRwgzediuOT32V7YrkTXZLa8MmiFsnneDhBzRoxmTr2CZrEs6jQENx3Hkxq4Uq5hiY7rGo8ZR5CbrHn8LiLE-FJMQJIo6r8hIdsJVTH6katp74RMnBauYfmCz_3BkKuAO2JYyVPdYAQbLAYVKhUmMdEXZH9C6aPoUNgcddo4ccZrFFJ-Ss0u6aYjpUPPLj3l42M2Ln_s" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/60 to-transparent">
+                    </div>
+                    <div class="absolute bottom-0 p-large w-full">
+                        <h3 class="font-heading-2 text-heading-2 text-pure-white mb-2 uppercase">Suspension &amp;
+                            Steering</h3>
+                        <p
+                            class="font-body-small text-body-small text-light-gray opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            Lower Arm, Ball Joint, Link Rod</p>
+                        <div class="mt-large h-[2px] w-0 group-hover:w-full bg-primary transition-all duration-300">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Features Section -->
+        <section class="py-10 sm:py-section bg-pure-white text-deep-black reveal-on-scroll">
+            <div
+                class="px-4 sm:px-6 lg:px-premium max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-block text-center">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-deep-black text-primary flex items-center justify-center mb-large">
+                        <span class="material-symbols-outlined text-3xl" data-weight="fill">verified</span>
+                    </div>
+                    <h4 class="font-heading-4 text-heading-4 mb-small uppercase tracking-widest text-deep-black">100%
+                        Genuine Guaranteed</h4>
+                    <p class="font-body-standard text-body-standard text-dark-gray max-w-xs">Directly sourced from
+                        manufacturing plants to ensure absolute compatibility.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-deep-black text-primary flex items-center justify-center mb-large">
+                        <span class="material-symbols-outlined text-3xl" data-weight="fill">construction</span>
+                    </div>
+                    <h4 class="font-heading-4 text-heading-4 mb-small uppercase tracking-widest text-deep-black">Expert
+                        Fitment</h4>
+                    <p class="font-body-standard text-body-standard text-dark-gray max-w-xs">Precision components
+                        designed for a perfect first-time installation by certified technicians.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-deep-black text-primary flex items-center justify-center mb-large">
+                        <span class="material-symbols-outlined text-3xl" data-weight="fill">support_agent</span>
+                    </div>
+                    <h4 class="font-heading-4 text-heading-4 mb-small uppercase tracking-widest text-deep-black">
+                        Nationwide Support</h4>
+                    <p class="font-body-standard text-body-standard text-dark-gray max-w-xs">Access our expert support
+                        network and dealer facilities across the entire territory.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Product Showcase Slider -->
+        <section
+            class="py-10 sm:py-section px-4 sm:px-6 lg:px-premium max-w-[1440px] mx-auto bg-deep-black overflow-hidden reveal-on-scroll">
+            <div
+                class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-8 sm:mb-block">
+                <h2 class="font-heading-2 text-[22px] sm:text-heading-2 text-pure-white uppercase">TRENDING GENUINE
+                    PARTS</h2>
+                <div class="flex gap-small">
+                    <button id="slider-prev"
+                        class="w-12 h-12 border border-border-divider hover:border-primary text-pure-white hover:text-primary flex items-center justify-center transition-colors">
+                        <span class="material-symbols-outlined">chevron_left</span>
+                    </button>
+                    <button id="slider-next"
+                        class="w-12 h-12 border border-border-divider hover:border-primary text-pure-white hover:text-primary flex items-center justify-center transition-colors">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+            <div id="product-slider"
+                class="flex gap-4 sm:gap-major overflow-x-auto pb-large snap-x no-scrollbar scroll-smooth">
+                <!-- Product Card 1: Brake Discs -->
+                <div
+                    class="min-w-[calc(50%-8px)] sm:min-w-[320px] bg-deep-black border border-border-divider snap-start product-card-hover transition-all duration-300">
+                    <div class="aspect-square bg-deep-black overflow-hidden relative group">
+                        <img alt="High performance ventilated brake disc"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDNCrPWwmF2WHOJeEj1WOZ-DZnYNzPcFRf9xaQBgw53ZMQ2eQWUOII1hSQ1b6waFj4pFRX_-nsYo2acFdmf5VOCakBl6ey_-foh9EUxAyydWJdgbi3hUnIsOKbjY4zQXzGejV6W-BYMVavGb2nyf0ZRMccJq3Nyzs3Zn11NShxWXyKUcEVQiZ10Ib4Ms0856qzgUS9fYpSOD-IoROOYVWwpEHQYfIEP05P28tTR94-J5x6vN3azMbZwEdPDIe-xtHN4B_XmSW92lY" />
+                        <div
+                            class="absolute top-4 right-4 bg-primary px-3 py-1 text-eyebrow-micro font-bold uppercase tracking-widest text-on-primary">
+                            New Arrival</div>
+                    </div>
+                    <div class="p-large">
+                        <span class="text-light-gray text-eyebrow-micro uppercase tracking-widest block mb-1">Braking
+                            Systems</span>
+                        <h5 class="font-heading-4 text-heading-4 text-pure-white mb-small uppercase">Ventilated Brake
+                            Disc</h5>
+                        <div class="flex justify-between items-center"><span
+                                class="text-primary font-bold font-body-large text-body-large">$349.00</span>
+                            <div class="flex gap-2"><button
+                                    class="w-10 h-10 border border-outline text-pure-white flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+                                    title="Enquiry"><span
+                                        class="material-symbols-outlined text-[20px]">chat_bubble</span></button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 2: Piston -->
+                <div
+                    class="min-w-[calc(50%-8px)] sm:min-w-[320px] bg-deep-black border border-border-divider snap-start product-card-hover transition-all duration-300">
+                    <div class="aspect-square bg-deep-black overflow-hidden relative group">
+                        <img alt="Precision forged engine piston"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKUmn-kl5MdmG3SxcX6KA0iVmrZ964-7OvsM5DaUJvLDNFrVBlKgZ3cQJ7lLR_hbzfzNs3qj1-XFe7_tCrgFNov6_KamB16iY3h4gOj0S3u9d7QM2ji5b8kxfHKUdWrwFFaLgipLGNpLOwf-4jzlLJ66yRVqkEal4cernRk2haI38kx-EZNz5eTtZKfj4-W-lSjins533SbVmiwoSGZQDnboqWLQ9da9z8tEnKNvrH4eLBR8SJat4x35QNMLwLco-qMm8FwQI8nUY" />
+                    </div>
+                    <div class="p-large">
+                        <span class="text-light-gray text-eyebrow-micro uppercase tracking-widest block mb-1">Engine
+                            Internals</span>
+                        <h5 class="font-heading-4 text-heading-4 text-pure-white mb-small uppercase">Forged Performance
+                            Piston</h5>
+                        <div class="flex justify-between items-center"><span
+                                class="text-primary font-bold font-body-large text-body-large">$299.00</span>
+                            <div class="flex gap-2"><button
+                                    class="w-10 h-10 border border-outline text-pure-white flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+                                    title="Enquiry"><span
+                                        class="material-symbols-outlined text-[20px]">chat_bubble</span></button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 3: Oil Filter -->
+                <div
+                    class="min-w-[calc(50%-8px)] sm:min-w-[320px] bg-deep-black border border-border-divider snap-start product-card-hover transition-all duration-300">
+                    <div class="aspect-square bg-deep-black overflow-hidden relative group">
+                        <img alt="Genuine high-flow performance oil filter"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFz6_uVCJ6A3mDZIyaZAFsNyw23Xf2RuccWN1PAMyKWKXYnjfZOguPStHsKB-7Hp-NCdjUQS1vIuWQP4ph6XJZy6s-yKeH-uMK-BGpA_MKJVuSYMts1aFLLAH_5WdI2GLA-OSE-qbTqKap3iy1DF9qijubM4iemZooHfoMUOBJO2X9gIYQOgpcZ99OjncYdubBJlnNEInrgSl7E9J-bEGb6jISVJmYwVQXJ03z1yNp14ovYW0sqfvsZTwX3miGOuotUShMBMYZJTI" />
+                    </div>
+                    <div class="p-large">
+                        <span
+                            class="text-light-gray text-eyebrow-micro uppercase tracking-widest block mb-1">Maintenance</span>
+                        <h5 class="font-heading-4 text-heading-4 text-pure-white mb-small uppercase">Genuine High-Flow
+                            Oil Filter</h5>
+                        <div class="flex justify-between items-center"><span
+                                class="text-primary font-bold font-body-large text-body-large">$45.00</span>
+                            <div class="flex gap-2"><button
+                                    class="w-10 h-10 border border-outline text-pure-white flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+                                    title="Enquiry"><span
+                                        class="material-symbols-outlined text-[20px]">chat_bubble</span></button></div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="min-w-[calc(50%-8px)] sm:min-w-[320px] bg-deep-black border border-border-divider snap-start product-card-hover transition-all duration-300">
+                    <div class="aspect-square bg-deep-black overflow-hidden relative group">
+                        <img alt="Genuine high-flow performance oil filter"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFz6_uVCJ6A3mDZIyaZAFsNyw23Xf2RuccWN1PAMyKWKXYnjfZOguPStHsKB-7Hp-NCdjUQS1vIuWQP4ph6XJZy6s-yKeH-uMK-BGpA_MKJVuSYMts1aFLLAH_5WdI2GLA-OSE-qbTqKap3iy1DF9qijubM4iemZooHfoMUOBJO2X9gIYQOgpcZ99OjncYdubBJlnNEInrgSl7E9J-bEGb6jISVJmYwVQXJ03z1yNp14ovYW0sqfvsZTwX3miGOuotUShMBMYZJTI" />
+                    </div>
+                    <div class="p-large">
+                        <span
+                            class="text-light-gray text-eyebrow-micro uppercase tracking-widest block mb-1">Maintenance</span>
+                        <h5 class="font-heading-4 text-heading-4 text-pure-white mb-small uppercase">Genuine High-Flow
+                            Oil Filter</h5>
+                        <div class="flex justify-between items-center"><span
+                                class="text-primary font-bold font-body-large text-body-large">$45.00</span>
+                            <div class="flex gap-2"><button
+                                    class="w-10 h-10 border border-outline text-pure-white flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+                                    title="Enquiry"><span
+                                        class="material-symbols-outlined text-[20px]">chat_bubble</span></button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 4: Caliper -->
+                <div
+                    class="min-w-[calc(50%-8px)] sm:min-w-[320px] bg-deep-black border border-border-divider snap-start product-card-hover transition-all duration-300">
+                    <div class="aspect-square bg-deep-black overflow-hidden relative group">
+                        <img alt="High performance red brake caliper"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2u5mSUY1qFV-WMHzz2ZXQnPy1dEEMLyPh4lYA06FMufrzQ20caSecvOvaeiM91jHb3BZkRwgzediuOT32V7YrkTXZLa8MmiFsnneDhBzRoxmTr2CZrEs6jQENx3Hkxq4Uq5hiY7rGo8ZR5CbrHn8LiLE-FJMQJIo6r8hIdsJVTH6katp74RMnBauYfmCz_3BkKuAO2JYyVPdYAQbLAYVKhUmMdEXZH9C6aPoUNgcddo4ccZrFFJ-Ss0u6aYjpUPPLj3l42M2Ln_s" />
+                        <div
+                            class="absolute top-4 right-4 bg-critical-red px-3 py-1 text-eyebrow-micro font-bold uppercase tracking-widest text-pure-white">
+                            Limited Stock</div>
+                    </div>
+                    <div class="p-large">
+                        <span class="text-light-gray text-eyebrow-micro uppercase tracking-widest block mb-1">Braking
+                            Systems</span>
+                        <h5 class="font-heading-4 text-heading-4 text-pure-white mb-small uppercase">Performance
+                            6-Piston Caliper</h5>
+                        <div class="flex justify-between items-center"><span
+                                class="text-primary font-bold font-body-large text-body-large">$1,150.00</span>
+                            <div class="flex gap-2"><button
+                                    class="w-10 h-10 border border-outline text-pure-white flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+                                    title="Enquiry"><span
+                                        class="material-symbols-outlined text-[20px]">chat_bubble</span></button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Newsletter / CTA -->
+        <section class="py-10 sm:py-section border-t border-border-divider bg-pure-white reveal-on-scroll">
+            <div class="px-4 sm:px-6 lg:px-premium max-w-[1440px] mx-auto">
+                <div class="mb-block">
+                    <h2 class="font-heading-2 text-heading-2 uppercase text-deep-black">TRUSTED BRANDS</h2>
+                    <div class="h-1 w-24 bg-primary-container mt-2"></div>
+                </div>
+                <div class="relative overflow-hidden group">
+                    <!-- Logo Slider Container -->
+                    <div
+                        class="flex gap-premium items-center animate-scroll whitespace-nowrap overflow-x-auto no-scrollbar py-medium">
+                        <!-- Brand Logos (Using Placeholder Text/Icons for representation as specific brand images aren't provided) -->
+                        <div
+                            class="flex-shrink-0 flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 opacity-80">
+                            <span class="font-bold text-heading-2 tracking-tighter uppercase text-deep-black">MARUTI
+                                SUZUKI</span>
+                        </div>
+                        <div
+                            class="flex-shrink-0 flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 opacity-80">
+                            <span
+                                class="font-bold text-heading-2 tracking-tighter uppercase text-deep-black">NEXA</span>
+                        </div>
+                        <div
+                            class="flex-shrink-0 flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 opacity-80">
+                            <span
+                                class="font-bold text-heading-2 tracking-tighter uppercase italic text-deep-black">BOSCH</span>
+                        </div>
+                        <div
+                            class="flex-shrink-0 flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 opacity-80">
+                            <span
+                                class="font-bold text-heading-2 tracking-tighter uppercase text-deep-black">DENSO</span>
+                        </div>
+                        <div
+                            class="flex-shrink-0 flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 opacity-80">
+                            <span class="font-bold text-heading-4 tracking-tighter uppercase text-deep-black">MAGNETI
+                                MARELLI</span>
+                        </div>
+                        <div
+                            class="flex-shrink-0 flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 opacity-80">
+                            <span
+                                class="font-bold text-heading-2 tracking-tighter uppercase text-deep-black">CONTINENTAL</span>
+                        </div>
+                        <!-- Duplicated for seamless loop if using CSS animation -->
+                        <div
+                            class="flex-shrink-0 flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 opacity-80">
+                            <span class="font-bold text-heading-2 tracking-tighter uppercase text-deep-black">MARUTI
+                                SUZUKI</span>
+                        </div>
+                        <div
+                            class="flex-shrink-0 flex items-center justify-center min-w-[180px] grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 opacity-80">
+                            <span
+                                class="font-bold text-heading-2 tracking-tighter uppercase text-deep-black">NEXA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <style>
+                @keyframes scroll {
+                    0% {
+                        transform: translateX(0);
+                    }
+
+                    100% {
+                        transform: translateX(-50%);
+                    }
+                }
+
+                .animate-scroll {
+                    display: flex;
+                    width: max-content;
+                    animation: scroll 30s linear infinite;
+                }
+
+                .animate-scroll:hover {
+                    animation-play-state: paused;
+                }
+            </style>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-deep-black border-t border-border-divider py-10 sm:py-section">
+        <div
+            class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-major px-4 sm:px-6 lg:px-premium max-w-[1440px] mx-auto mb-8 sm:mb-block">
+            <div class="flex flex-col gap-large col-span-2 md:col-span-2 lg:col-span-1">
+                <div class="font-heading-4 text-heading-4 font-bold text-pure-white mb-small uppercase">AL QAWSA GENUINE
+                    PARTS</div>
+                <p class="font-body-small text-body-small text-light-gray">Providing sophisticated vehicle owners with
+                    components that match the original factory standards of excellence.</p>
+            </div>
+            <div class="flex flex-col gap-small">
+                <span
+                    class="font-heading-4 text-heading-4 text-pure-white uppercase tracking-widest text-eyebrow-micro mb-small">Explore</span>
+                <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
+                    href="#">Catalog Search</a>
+                <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
+                    href="#">Performance Kits</a>
+                <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
+                    href="#">New Releases</a>
+                <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
+                    href="#">Find a Dealer</a>
+            </div>
+            <div class="flex flex-col gap-small">
+                <span
+                    class="font-heading-4 text-heading-4 text-pure-white uppercase tracking-widest text-eyebrow-micro mb-small">Ownership</span>
+                <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
+                    href="#">Book Service</a>
+                <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
+                    href="#">Owner Manuals</a>
+                <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
+                    href="#">Warranty Info</a>
+                <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
+                    href="#">Safety Recalls</a>
+            </div>
+            <div class="flex flex-col gap-small">
+                <span
+                    class="font-heading-4 text-heading-4 text-pure-white uppercase tracking-widest text-eyebrow-micro mb-small">Corporate</span>
+                <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
+                    href="#">About Us</a>
+                <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
+                    href="#">Contact Us</a>
+                <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
+                    href="#">Privacy Policy</a>
+                <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
+                    href="#">Terms of Service</a>
+            </div>
+        </div>
+        <div
+            class="px-4 sm:px-6 lg:px-premium max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-large border-t border-border-divider pt-large">
+            <span class="font-body-small text-body-small text-light-gray opacity-60 uppercase tracking-widest">© 2024 AL
+                QAWSA GENUINE PARTS. PRECISION CRAFTED.</span>
+            <div class="flex gap-major">
+                <a class="text-light-gray hover:text-primary transition-colors" href="#">
+                    <span class="material-symbols-outlined">social_leaderboard</span>
+                </a>
+                <a class="text-light-gray hover:text-primary transition-colors" href="#">
+                    <span class="material-symbols-outlined">share</span>
+                </a>
+                <a class="text-light-gray hover:text-primary transition-colors" href="#">
+                    <span class="material-symbols-outlined">youtube_activity</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Scroll reveal
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+        // Mobile menu
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            mobileOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            mobileOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        hamburgerBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+        mobileOverlay.addEventListener('click', closeMenu);
+
+        // Close menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Infinite-loop product slider
+        const slider = document.getElementById('product-slider');
+        const prevBtn = document.getElementById('slider-prev');
+        const nextBtn = document.getElementById('slider-next');
+
+        // Clone all original cards and append for seamless looping
+        const originalCards = Array.from(slider.children);
+        const cardCount = originalCards.length;
+        originalCards.forEach(card => {
+            const clone = card.cloneNode(true);
+            slider.appendChild(clone);
+        });
+
+        function getCardWidth() {
+            const card = slider.querySelector(':scope > div');
+            if (!card) return 300;
+            const gap = parseFloat(getComputedStyle(slider).gap) || 16;
+            return card.offsetWidth + gap;
+        }
+
+        // Total width of one full set of original cards
+        function getSetWidth() {
+            return getCardWidth() * cardCount;
+        }
+
+        // Start scrolled to beginning of the original set
+        let isScrolling = false;
+
+        function resetLoop() {
+            const setW = getSetWidth();
+            // If we've scrolled past the original set, jump back
+            if (slider.scrollLeft >= setW) {
+                slider.style.scrollBehavior = 'auto';
+                slider.scrollLeft -= setW;
+                slider.style.scrollBehavior = '';
+            }
+            // If we've scrolled before start, jump to end of original set
+            if (slider.scrollLeft <= 0) {
+                slider.style.scrollBehavior = 'auto';
+                slider.scrollLeft += setW;
+                slider.style.scrollBehavior = '';
+            }
+        }
+
+        function slideNext() {
+            if (isScrolling) return;
+            isScrolling = true;
+            slider.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+            setTimeout(() => {
+                resetLoop();
+                isScrolling = false;
+            }, 400);
+        }
+
+        function slidePrev() {
+            if (isScrolling) return;
+            isScrolling = true;
+            // Ensure we can scroll left — if at 0, jump first
+            if (slider.scrollLeft <= 0) {
+                slider.style.scrollBehavior = 'auto';
+                slider.scrollLeft += getSetWidth();
+                slider.style.scrollBehavior = '';
+            }
+            slider.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+            setTimeout(() => {
+                resetLoop();
+                isScrolling = false;
+            }, 400);
+        }
+
+        // Autoplay Logic
+        let autoplayInterval;
+        const AUTOPLAY_DELAY = 2000;
+
+        function startAutoplay() {
+            stopAutoplay();
+            autoplayInterval = setInterval(slideNext, AUTOPLAY_DELAY);
+        }
+
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+
+        // Initialize Autoplay
+        startAutoplay();
+
+        // Pause on hover
+        slider.addEventListener('mouseenter', stopAutoplay);
+        slider.addEventListener('mouseleave', startAutoplay);
+
+        // Reset timer on manual navigation
+        nextBtn.addEventListener('click', () => {
+            stopAutoplay();
+            slideNext();
+            startAutoplay();
+        });
+        prevBtn.addEventListener('click', () => {
+            stopAutoplay();
+            slidePrev();
+            startAutoplay();
+        });
+
+        // Typewriter Effect
+        const typewriterElement = document.getElementById('typewriter-h1');
+        const textLines = [
+            { text: "Precision Engineered.", class: "" },
+            { text: "Genuine Performance.", class: "text-primary" }
+        ];
+
+        let lineIndex = 0;
+        let charIndex = 0;
+        let currentHTML = "";
+
+        function type() {
+            if (lineIndex < textLines.length) {
+                const currentLine = textLines[lineIndex];
+
+                if (charIndex < currentLine.text.length) {
+                    if (charIndex === 0 && lineIndex > 0) {
+                        currentHTML += "<br />";
+                    }
+
+                    const char = currentLine.text[charIndex];
+                    if (currentLine.class) {
+                        // For the second line, we wrap the entire growing string in the span
+                        const lineText = currentLine.text.substring(0, charIndex + 1);
+                        typewriterElement.innerHTML = currentHTML + `<span class="${currentLine.class}">${lineText}</span>`;
+                    } else {
+                        currentHTML += char;
+                        typewriterElement.innerHTML = currentHTML;
+                    }
+
+                    charIndex++;
+                    setTimeout(type, 80);
+                } else {
+                    lineIndex++;
+                    charIndex = 0;
+                    if (lineIndex === textLines.length) {
+                        // Typing finished, maybe keep cursor or remove it
+                        // typewriterElement.classList.remove('typewriter-cursor');
+                    } else {
+                        setTimeout(type, 500); // Pause between lines
+                    }
+                }
+            }
+        }
+
+        // Start typing when page loads
+        window.addEventListener('load', () => {
+            setTimeout(type, 1000); // Initial delay
+        });
+    </script>
+</body>
+
+</html>
