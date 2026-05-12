@@ -195,6 +195,45 @@
                 opacity: 0;
             }
         }
+
+        /* Hero Carousel Styles */
+        .carousel-container {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            z-index: 0;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1);
+            transition: transform 6s linear;
+        }
+
+        .carousel-slide.active .carousel-image {
+            transform: scale(1.1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(19, 19, 19, 0.3) 0%, rgba(19, 19, 19, 0.7) 70%, rgba(19, 19, 19, 1) 100%);
+            z-index: 2;
+        }
     </style>
     <style>
         html {
@@ -255,7 +294,7 @@
             <a class="text-pure-white opacity-80 hover:opacity-100 hover:text-primary font-heading-4 text-heading-4 transition-all duration-200"
                 href="#">Certificates</a>
             <a class="text-pure-white opacity-80 hover:opacity-100 hover:text-primary font-heading-4 text-heading-4 transition-all duration-200"
-                href="#">Contact Us</a>
+                href="#contact">Contact Us</a>
         </nav>
         <div class="flex items-center gap-3 sm:gap-large">
             <span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">search</span>
@@ -293,11 +332,20 @@
         <!-- Hero Section -->
         <section
             class="relative min-h-[500px] sm:mt-[-50px] sm:min-h-[650px] lg:min-h-[706px] flex items-center overflow-hidden">
-            <div class="absolute inset-0 z-0">
-                <video autoplay loop muted playsinline class="w-full h-full object-cover object-center scale-105">
-                    <source src="Adobe Express - cars video.mp4" type="video/mp4">
-                </video>
-                <div class="absolute inset-0 hero-gradient"></div>
+            <div class="carousel-container">
+                <div class="carousel-slide active">
+                    <img src="banner_spare_parts_1.png" alt="Premium Engine Parts" class="carousel-image">
+                </div>
+                <div class="carousel-slide">
+                    <img src="banner_spare_parts_2.png" alt="High Performance Brakes" class="carousel-image">
+                </div>
+                <div class="carousel-slide">
+                    <img src="banner_spare_parts_3.png" alt="Precision Automotive Components" class="carousel-image">
+                </div>
+                <div class="carousel-slide">
+                    <img src="banner_spare_parts_4.png" alt="Advanced Car Lighting" class="carousel-image">
+                </div>
+                <div class="hero-overlay"></div>
             </div>
             <div class="relative z-10 px-4 sm:px-6 lg:px-premium max-w-[1440px] mx-auto w-full">
                 <div class="max-w-5xl text-left">
@@ -320,11 +368,11 @@
                 <div>
                     <span class="text-primary font-bold tracking-widest uppercase text-eyebrow-micro mb-2 block">System
                         Components</span>
-                    <h2 class="font-heading-2 text-[22px] sm:text-heading-2 text-pure-white uppercase">SHOP BY CATEGORY
+                    <h2 class="font-heading-2 text-[22px] sm:text-heading-2 text-pure-white uppercase">Our Activities
                     </h2>
                 </div>
                 <a class="text-primary font-button-label text-button-label hover:text-pure-white transition-colors uppercase border-b border-primary"
-                    href="#">VIEW ALL CATEGORIES</a>
+                    href="#">VIEW ALL Activities</a>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-major">
                 <!-- Category Card 1: Body & Exterior -->
@@ -647,6 +695,142 @@
                 }
             </style>
         </section>
+        <!-- Contact Us Section -->
+        <section id="contact" class="py-10 sm:py-section bg-surface border-t border-border-divider reveal-on-scroll">
+            <div class="px-4 sm:px-6 lg:px-premium max-w-[1440px] mx-auto">
+                <div class="mb-block text-center lg:text-left">
+                    <h2 class="font-heading-2 text-heading-2 uppercase text-pure-white">Connect With Us</h2>
+                    <div class="h-1 w-24 bg-primary mt-2 mx-auto lg:mx-0"></div>
+                    <p class="text-light-gray mt-4 max-w-2xl">Have questions about our genuine parts or need expert
+                        assistance? Reach out to us today.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-major lg:gap-premium items-start">
+                    <!-- Contact Form -->
+                    <div class="bg-deep-black p-8 sm:p-premium border border-border-divider relative overflow-hidden">
+                        <form id="contact-form" class="space-y-large">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-large">
+                                <div class="space-y-2">
+                                    <label class="text-eyebrow-micro text-light-gray uppercase">Full Name</label>
+                                    <input type="text" placeholder="Your Name" required
+                                        class="w-full bg-surface  focus:ring-1 focus:ring-primary text-pure-white p-4">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-eyebrow-micro text-light-gray uppercase">Email Address</label>
+                                    <input type="email" placeholder="email@example.com" required
+                                        class="w-full bg-surface  focus:ring-1 focus:ring-primary text-pure-white p-4">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-eyebrow-micro text-light-gray uppercase">Subject</label>
+                                <select class="w-full bg-surface  focus:ring-1 focus:ring-primary text-pure-white p-4">
+                                    <option>General Inquiry</option>
+                                    <option>Parts Availability</option>
+                                    <option>Shipping Quote</option>
+                                    <option>Technical Support</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-eyebrow-micro text-light-gray uppercase">Message</label>
+                                <textarea rows="3" placeholder="How can we help you?" required
+                                    class="w-full bg-surface  focus:ring-1 focus:ring-primary text-pure-white p-4 resize-none"></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-primary hover:bg-white text-deep-black font-bold uppercase tracking-widest py-4 transition-all duration-300 flex items-center justify-center gap-2 group">
+                                Send Message
+                                <span
+                                    class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </button>
+                        </form>
+
+                        <!-- Success Message (hidden by default) -->
+                        <div id="form-success"
+                            class="absolute inset-0 bg-deep-black flex flex-col items-center justify-center text-center p-premium transition-all duration-500 translate-y-full opacity-0 pointer-events-none">
+                            <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-large">
+                                <span class="material-symbols-outlined text-deep-black text-[40px]">check</span>
+                            </div>
+                            <h3 class="text-heading-3 font-bold text-pure-white uppercase mb-small">Message Sent!</h3>
+                            <p class="text-light-gray mb-premium">Thank you for reaching out. Our team will get back to
+                                you shortly.</p>
+                            <button onclick="resetForm()"
+                                class="text-primary font-bold uppercase tracking-widest border-b border-primary hover:text-pure-white hover:border-pure-white transition-all">Send
+                                Another</button>
+                        </div>
+                    </div>
+                    <!-- Contact Information -->
+                    <div class="space-y-major">
+                        <div
+                            class="bg-deep-black p-large border border-border-divider group hover:border-primary transition-colors duration-300">
+                            <div class="flex items-center gap-large">
+                                <div
+                                    class="w-14 h-14 bg-surface flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                                    <span
+                                        class="material-symbols-outlined text-primary group-hover:text-deep-black">phone_in_talk</span>
+                                </div>
+                                <div>
+                                    <span class="text-eyebrow-micro text-light-gray uppercase block mb-1">Call Us</span>
+                                    <a href="tel:+971501234567"
+                                        class="text-heading-4 font-bold text-pure-white hover:text-primary transition-colors">+971
+                                        50 123 4567</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-deep-black p-large border border-border-divider group hover:border-primary transition-colors duration-300">
+                            <div class="flex items-center gap-large">
+                                <div
+                                    class="w-14 h-14 bg-surface flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                                    <span
+                                        class="material-symbols-outlined text-primary group-hover:text-deep-black">phone_in_talk</span>
+                                </div>
+                                <div>
+                                    <span class="text-eyebrow-micro text-light-gray uppercase block mb-1">Call Us</span>
+                                    <a href="tel:+97162530415"
+                                        class="text-heading-4 font-bold text-pure-white hover:text-primary transition-colors">+971
+                                        6253 0415</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-deep-black p-large border border-border-divider group hover:border-primary transition-colors duration-300">
+                            <div class="flex items-center gap-large">
+                                <div
+                                    class="w-14 h-14 bg-surface flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                                    <span
+                                        class="material-symbols-outlined text-primary group-hover:text-deep-black">mail</span>
+                                </div>
+                                <div>
+                                    <span class="text-eyebrow-micro text-light-gray uppercase block mb-1">Email
+                                        Us</span>
+                                    <a href="mailto:info@alqaswa.ae"
+                                        class="text-heading-4 font-bold text-pure-white hover:text-primary transition-colors">info@alqaswa.ae</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-deep-black p-large border border-border-divider group hover:border-primary transition-colors duration-300">
+                            <div class="flex items-center gap-large">
+                                <div
+                                    class="w-14 h-14 bg-surface flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                                    <span
+                                        class="material-symbols-outlined text-primary group-hover:text-deep-black">location_on</span>
+                                </div>
+                                <div>
+                                    <span class="text-eyebrow-micro text-light-gray uppercase block mb-1">Visit
+                                        Us</span>
+                                    <span class="text-heading-4 font-bold text-pure-white">Industrial Area, Dubai,
+                                        UAE</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
     </main>
     <!-- Footer -->
     <footer class="bg-deep-black border-t border-border-divider py-10 sm:py-section">
@@ -688,7 +872,7 @@
                 <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
                     href="#">About Us</a>
                 <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
-                    href="#">Contact Us</a>
+                    href="#contact">Contact Us</a>
                 <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
                     href="#">Privacy Policy</a>
                 <a class="text-light-gray font-body-small text-body-small hover:text-primary transition-colors duration-200"
@@ -723,6 +907,19 @@
             });
         }, observerOptions);
         document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+        // Hero Carousel Autoplay
+        const slides = document.querySelectorAll('.carousel-slide');
+        let currentSlide = 0;
+        const slideInterval = 5000; // 5 seconds
+
+        function nextHeroSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextHeroSlide, slideInterval);
 
         // Mobile menu
         const hamburgerBtn = document.getElementById('hamburger-btn');
@@ -901,6 +1098,27 @@
         window.addEventListener('load', () => {
             setTimeout(type, 1000); // Initial delay
         });
+
+        // Contact Form Handling
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Simulate form submission
+                formSuccess.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+                contactForm.classList.add('opacity-0', 'pointer-events-none');
+            });
+        }
+
+        function resetForm() {
+            if (contactForm) {
+                contactForm.reset();
+                contactForm.classList.remove('opacity-0', 'pointer-events-none');
+                formSuccess.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+            }
+        }
     </script>
 </body>
 
